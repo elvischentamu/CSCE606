@@ -4,9 +4,11 @@
 %table#movies.table.table-striped.col-md-12
   %thead
     %tr
-      %th Movie Title
+      %th#title_header.hilite
+        = link_to 'Movie Title', movies_path(sort: 'title')
       %th Rating
-      %th Release Date
+      %th#title_header.hilite
+        = link_to 'Release_Date', movies_path(sort: 'date')
       %th More Info
   %tbody
     - @movies.each do |movie|

@@ -10,12 +10,12 @@
 %table#movies.table.table-striped.col-md-12
   %thead
     %tr
-      - if params[:sort] == 'title'
+      - if session[:sort] == 'title'
         %th.hilite= link_to 'Movie Title', movies_path(:sort => :title)
       - else
         %th= link_to 'Movie Title', movies_path(:sort => :title)
       %th Rating
-      - if params[:sort] == 'release_date'
+      - if session[:sort] == 'release_date'
         %th.hilite= link_to 'Release_Date', movies_path(:sort => :release_date)
       - else
         %th= link_to 'Release_Date', movies_path(:sort => :release_date)

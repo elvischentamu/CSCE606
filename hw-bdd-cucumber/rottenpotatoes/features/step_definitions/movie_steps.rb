@@ -30,10 +30,16 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  fail "Unimplemented"
+  if uncheck == "un"
+    rating_list.split(', ').each {|x| step %{I uncheck "ratings_#{x}"}}
+  else
+    rating_list.split(', ').each {|x| step %{I check "ratings_#{x}"}}
+  end
+  # fail "Unimplemented"
 end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  fail "Unimplemented"
+  expect(page).to have_css("table#movies tbody tr", count: Movie.count)
+  # fail "Unimplemented"
 end
